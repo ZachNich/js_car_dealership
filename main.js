@@ -60,3 +60,9 @@ const modelsSold = dupeCounter(sales2017.map(sale => sale.vehicle.model))
 const modelSoldMost = findHighestKeyValue(modelsSold)
 console.log(modelsSold)
 console.log(modelSoldMost)
+
+// banks that provided most loans
+const banks = dupeCounter(sales2017.map(sale => sale.credit.credit_provider))
+const bankUsedMost = findHighestKeyValue(banks)
+console.log('All Banks: ', banks)
+console.log('Bank Used Most: ', bankUsedMost)
