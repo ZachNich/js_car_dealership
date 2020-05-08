@@ -20,7 +20,15 @@ const dupeCounter = (array) => {
 }
 
 // returns the key with most repeated items in an object as a string
-const findHighestKeyValue = object => Object.entries(object).sort((a, b) => a[1] - b[1]).pop()[0]
+const findHighestKeyValue = object => {
+    let finalReturn = []
+    const sorted = Object.entries(object).sort((a, b) => b[1] - a[1])
+    const allMaxes = sorted.filter(array => array[1] == sorted[0][1])
+    for (let i = 0; i < allMaxes.length; i++) {
+        finalReturn.push(allMaxes[i][0])
+    }
+    return finalReturn;
+}
 
 // month in which most cars were sold
 const monthlySales = dupeCounter(sales2017.flatMap(car => car.purchase_date).map(date => date.slice(5, 7)))
@@ -47,3 +55,8 @@ for (let i = 0; i < sales2017.length; i++) {
 console.log('Agents and Total Gross Profit: ', agentSales)
 console.log('Highest Grossing Agent: ', findHighestKeyValue(agentSales))
 
+// car model sold most
+const modelsSold = dupeCounter(sales2017.map(sale => sale.vehicle.model))
+const modelSoldMost = findHighestKeyValue(modelsSold)
+console.log(modelsSold)
+console.log(modelSoldMost)
