@@ -66,3 +66,15 @@ const banks = dupeCounter(sales2017.map(sale => sale.credit.credit_provider))
 const bankUsedMost = findHighestKeyValue(banks)
 console.log('All Banks: ', banks)
 console.log('Bank Used Most: ', bankUsedMost)
+
+// month in which zero cars were sold
+const monthsWithSales = Object.keys(monthlySales).sort((a, b) => a - b)
+let monthWithNoSales = 0;
+for (let i = 0; i < 12; i++) {
+    console.log('Int of salesMonth i: ', parseInt(monthsWithSales[i]))
+    if (parseInt(monthsWithSales[i]) !== i + 1) {
+        monthWithNoSales = i + 1;
+        break;
+    }
+}
+console.log('Month with No Sales: ', monthWithNoSales)
